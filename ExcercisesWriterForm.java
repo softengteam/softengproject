@@ -7,6 +7,7 @@ import javax.swing.WindowConstants;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.JOptionPane;
 public class ExcercisesWriterForm extends javax.swing.JFrame 
 {
    String  wusername,wpassword;
@@ -18,14 +19,8 @@ public class ExcercisesWriterForm extends javax.swing.JFrame
         this.wusername=wusername;
         this.wpassword=wpassword;
         txtwarxi.setText(wusername);
-          
-        System.out.println("WRITER USERNAME in ExcerciseWRITERForm="+wusername+" ERITER PASSWORD in ExcercisesWRITERForm ="+wpassword);
-    
         addRowToJTable();
         
-         System.out.println("EDO EFTASE");
-         //new ExcercisesFormWriterUploa(wusername,wpassword).setVisible(true);
-        // dispose();
     }
     
 public void addRowToJTable()
@@ -37,7 +32,6 @@ public void addRowToJTable()
    {
        if (e_ergasies.writers.get(i).username.compareTo(wusername)==0 && e_ergasies.writers.get(i).password.compareTo(wpassword)==0)
        {
-           System.out.println("Found writer in Pos "+i);
            pos=i;
        }
        else
@@ -48,7 +42,7 @@ public void addRowToJTable()
    }
    
    ArrayList <Excercise> list=e_ergasies.writers.get(pos).ListExercsisesuploaded();
-   Object rowData[]=new Object[6];
+   Object rowData[]=new Object[9];
  
    for (int i=0; i<e_ergasies.writers.size();i++)
    {
@@ -66,6 +60,12 @@ public void addRowToJTable()
                 
                 rowData[4]=list.get(j).free_of_charge;
                 rowData[5]=list.get(j).exercost;
+                
+                rowData[6]=list.get(j).time_limited;
+                rowData[7]=list.get(j).exercise_size;
+                rowData[8]=list.get(j).expires;
+                
+                
                 model.addRow(rowData);
             }
    }
@@ -90,6 +90,11 @@ public void addRowToJTable()
         jLabel7 = new javax.swing.JLabel();
         txtcost = new javax.swing.JTextField();
         chkdorean = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        txtsize = new javax.swing.JTextField();
+        chkdorean1 = new javax.swing.JCheckBox();
+        jLabel9 = new javax.swing.JLabel();
+        txtenduse = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,55 +151,67 @@ public void addRowToJTable()
         chkdorean.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         chkdorean.setText("Δωρεάν");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setText("Μέγεθος (KB)");
+
+        chkdorean1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        chkdorean1.setText("Χρήση για Περιορισμένο Χρονικό Διάστημα");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setText("Λήξη");
+
+        txtenduse.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 62, Short.MAX_VALUE)
+                .addGap(0, 184, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtwarxi, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(38, 38, 38)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txttheme)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtcode, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(5, 5, 5)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtcategory, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtpages, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtsize, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(chkdorean)
+                                            .addGap(52, 52, 52)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtcost, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtpages, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txttheme, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                                            .addComponent(txtcode, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtcategory))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(chkdorean1)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtenduse, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(chkdorean)
-                        .addGap(443, 443, 443)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtcost, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
                         .addComponent(jButton1)
-                        .addGap(54, 54, 54)
+                        .addGap(55, 55, 55)
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -205,35 +222,44 @@ public void addRowToJTable()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtwarxi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(txttheme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(txtcategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(txtpages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel4)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(chkdorean)
-                .addGap(33, 33, 33)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtcost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(jLabel2)
+                    .addComponent(txtcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(17, 17, 17))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txttheme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtcategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtpages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkdorean)
+                            .addComponent(chkdorean1)
+                            .addComponent(jLabel9)
+                            .addComponent(txtenduse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtcost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtsize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(56, 56, 56))))
         );
 
         pack();
@@ -244,19 +270,47 @@ public void addRowToJTable()
     }//GEN-LAST:event_txtwarxiActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Excercise newexer=new Excercise(Integer.parseInt(txtcode.getText()),Integer.parseInt(txtpages.getText()),txttheme.getText(),txtcategory.getText());
+       
+        Excercise newexer=new Excercise();
+        if (Integer.parseInt(txtsize.getText())>5000)
+        {
+            JOptionPane.showMessageDialog(null,"Υπέρβαση Ορίου Μεγεθους 5000 ΚBytes. H Εργασία δεν μπορεί να ανέβει");
+            System.exit(0);
+        }
+        //Excercise(int exercisecode, int pages, String theme, String category,boolean free_of_charge,float exercost,boolean time_limited,int exercise_size,String expires) 
+        if (chkdorean.isSelected()==true && chkdorean1.isSelected()==true)
+        {
+            newexer=new Excercise(Integer.parseInt(txtcode.getText()),Integer.parseInt(txtpages.getText()),txttheme.getText(),txtcategory.getText(),true,Float.parseFloat(txtcost.getText()),true,Integer.parseInt(txtsize.getText()),txtenduse.getText());
             e_ergasies.excercises.add(newexer);
+        }
+        
+        if (chkdorean.isSelected()==true && chkdorean1.isSelected()==false)
+        {
+            newexer=new Excercise(Integer.parseInt(txtcode.getText()),Integer.parseInt(txtpages.getText()),txttheme.getText(),txtcategory.getText(),true,Float.parseFloat(txtcost.getText()),false,Integer.parseInt(txtsize.getText()),txtenduse.getText());
+            e_ergasies.excercises.add(newexer);
+        }
+        
+        if (chkdorean.isSelected()==false && chkdorean1.isSelected()==true)
+        {
+            newexer=new Excercise(Integer.parseInt(txtcode.getText()),Integer.parseInt(txtpages.getText()),txttheme.getText(),txtcategory.getText(),false,Float.parseFloat(txtcost.getText()),true,Integer.parseInt(txtsize.getText()),txtenduse.getText());
+            e_ergasies.excercises.add(newexer);
+        }
+        
+        if (chkdorean.isSelected()==false && chkdorean1.isSelected()==false)
+        {
+            newexer=new Excercise(Integer.parseInt(txtcode.getText()),Integer.parseInt(txtpages.getText()),txttheme.getText(),txtcategory.getText(),false,Float.parseFloat(txtcost.getText()),false,Integer.parseInt(txtsize.getText()),txtenduse.getText());
+            e_ergasies.excercises.add(newexer);
+        }
             
-             for (int i=0;i<e_ergasies.writers.size();i++)
-                 if (e_ergasies.writers.get(i).username.compareTo(wusername)==0 && e_ergasies.writers.get(i).password.compareTo(wpassword)==0)
-                 {
+        for (int i=0;i<e_ergasies.writers.size();i++)
+             if (e_ergasies.writers.get(i).username.compareTo(wusername)==0 && e_ergasies.writers.get(i).password.compareTo(wpassword)==0)
+             {
                      e_ergasies.writers.get(i).exercisesuploaded.add(newexer);
                      break;
-                 }
+              }
          
-             dispose();
-            new ExcercisesFormWriterUpload(wusername,wpassword).setVisible(true);
-          
+         dispose();
+         new ExcercisesFormWriterUpload(wusername,wpassword).setVisible(true);     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -264,13 +318,10 @@ public void addRowToJTable()
          new SecondFormWriter(wusername,wpassword).setVisible(true); 
     }//GEN-LAST:event_jButton2ActionPerformed
    
-    
-    public static void main(String args[])
-    {
-    }
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chkdorean;
+    private javax.swing.JCheckBox chkdorean1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -279,10 +330,14 @@ public void addRowToJTable()
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtcategory;
     private javax.swing.JTextField txtcode;
     private javax.swing.JTextField txtcost;
+    private javax.swing.JTextField txtenduse;
     private javax.swing.JTextField txtpages;
+    private javax.swing.JTextField txtsize;
     private javax.swing.JTextField txttheme;
     private javax.swing.JTextField txtwarxi;
     // End of variables declaration//GEN-END:variables
