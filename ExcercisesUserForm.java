@@ -39,7 +39,7 @@ public class ExcercisesUserForm extends javax.swing.JFrame
        }
 
        ArrayList <Excercise> list=e_ergasies.users.get(pos).ListExercsisesviewed();
-       Object rowData[]=new Object[6];
+       Object rowData[]=new Object[9];
 
        for (int i=0; i<e_ergasies.users.size();i++)
        {
@@ -52,6 +52,9 @@ public class ExcercisesUserForm extends javax.swing.JFrame
                     rowData[3]=list.get(j).category;       
                     rowData[4]=list.get(j).free_of_charge;
                     rowData[5]=list.get(j).exercost;
+                    rowData[6]=list.get(j).time_limited;
+                    rowData[7]=list.get(j).exercise_size;
+                    rowData[8]=list.get(j).expires;
 
                     model.addRow(rowData);
                 }
@@ -77,7 +80,7 @@ public class ExcercisesUserForm extends javax.swing.JFrame
        }
 
        ArrayList <Excercise> list=e_ergasies.users.get(pos).ListExercsisesdownloaded();
-       Object rowData[]=new Object[6];
+       Object rowData[]=new Object[9];
 
        for (int i=0; i<e_ergasies.users.size();i++)
        {
@@ -90,7 +93,10 @@ public class ExcercisesUserForm extends javax.swing.JFrame
                     rowData[3]=list.get(j).category;       
                     rowData[4]=list.get(j).free_of_charge;
                     rowData[5]=list.get(j).exercost;
-
+                    rowData[6]=list.get(j).time_limited;
+                    rowData[7]=list.get(j).exercise_size;
+                    rowData[8]=list.get(j).expires;
+                    
                     model.addRow(rowData);
                 }
        }
@@ -120,7 +126,7 @@ public class ExcercisesUserForm extends javax.swing.JFrame
 
             },
             new String [] {
-                "ExerciseCode", "Theme", "Category", "Pages", "Payable", "Cost"
+                "ExerciseCode", "Theme", "Category", "Pages", "Payable", "Cost", "Time_Limited", "Exercise_size", "Expires"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -141,7 +147,7 @@ public class ExcercisesUserForm extends javax.swing.JFrame
 
             },
             new String [] {
-                "ExerciseCode", "Theme", "Category", "Pages", "Payable", "Cost"
+                "ExerciseCode", "Theme", "Category", "Pages", "Payable", "Cost", "Time_Limited", "Exercise_Size", "Expires"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -159,6 +165,11 @@ public class ExcercisesUserForm extends javax.swing.JFrame
             .addComponent(jScrollPane1)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtarxi2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 212, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -166,14 +177,9 @@ public class ExcercisesUserForm extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtarxi, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(365, 365, 365)
+                        .addGap(366, 366, 366)
                         .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtarxi2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 212, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,15 +189,19 @@ public class ExcercisesUserForm extends javax.swing.JFrame
                     .addComponent(jLabel1)
                     .addComponent(txtarxi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtarxi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(txtarxi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(31, 31, 31))
         );
 
         pack();

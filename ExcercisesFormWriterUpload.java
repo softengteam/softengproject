@@ -37,7 +37,7 @@ public class ExcercisesFormWriterUpload extends javax.swing.JFrame
         }
    
    ArrayList <Excercise> list=e_ergasies.writers.get(pos).ListExercsisesuploaded();
-   Object rowData[]=new Object[6];
+   Object rowData[]=new Object[9];
  
    for (int i=0; i<e_ergasies.writers.size();i++)
    {
@@ -50,6 +50,10 @@ public class ExcercisesFormWriterUpload extends javax.swing.JFrame
                 rowData[3]=list.get(j).category;
                 rowData[4]=list.get(j).free_of_charge;
                 rowData[5]=list.get(j).exercost;
+                rowData[6]=list.get(j).time_limited;
+                rowData[7]=list.get(j).exercise_size;
+                rowData[8]=list.get(j).expires;
+                
                 model.addRow(rowData);
             }
    }
@@ -65,13 +69,18 @@ public class ExcercisesFormWriterUpload extends javax.swing.JFrame
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Exer_Code", "Pages", "Category", "Theme", "Payable", "Cost"
+                "Exer_Code", "Pages", "Category", "Theme", "Payable", "Cost", "Time_Limited", "Exercise_Size", "Expires"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -106,8 +115,7 @@ public class ExcercisesFormWriterUpload extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,6 +140,10 @@ public class ExcercisesFormWriterUpload extends javax.swing.JFrame
           dispose(); 
          new SecondFormWriter(wusername,wpassword).setVisible(true); 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
