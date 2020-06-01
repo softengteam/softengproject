@@ -27,15 +27,20 @@ public class e_ergasies extends JFrame
      
     public e_ergasies()
     {
+        super("Ιωάννα Δρε, Παναγιώτα Γουρδούπη, Χρήσtος Πιερίδης, Παναγιώτης Λυπμεράτος");
         c=getContentPane();
         c.setLayout(new FlowLayout());
         JButton btnuser=new JButton("User");
         JButton btnwriter=new JButton("Writer");
         JButton btnexit=new JButton("Exit");
         
-        c.add(btnuser);
-        c.add(btnwriter);
-        c.add(btnexit);
+        JPanel myp=new JPanel();
+        myp.setLayout(new BorderLayout());
+        myp.add(btnuser,BorderLayout.WEST);
+        myp.add(btnwriter,BorderLayout.CENTER);
+        myp.add(btnexit,BorderLayout.EAST);
+        
+        c.add(myp);
         
         btnuser.addActionListener(new ActionListener()
         {
@@ -158,7 +163,7 @@ public class e_ergasies extends JFrame
         
         e_ergasies er=new e_ergasies();
         
-        er.setSize(300,300);
+        er.setSize(700,100);
         er.setVisible(true);
     }
 }
